@@ -1,0 +1,15 @@
+name: Pipeline Validation
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - 'devops-autopilot/**'
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate
+        run: |
+          echo "Pipeline validation triggered"
+          cat .github/workflows/ci.yml || echo "No ci.yml found"
